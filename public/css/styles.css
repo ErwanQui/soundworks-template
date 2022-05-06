@@ -5,6 +5,7 @@ html, body {
   min-height: 100%;
   background-color: #000000;
   color: #ffffff;
+  text-align: center;
 }
 
 html {
@@ -53,3 +54,18 @@ body.loading {
   text-align: center;
   font-size: 4rem;
 }
+
+$("#roundslider1").roundSlider({
+    sliderType: "default",
+    value: 50
+});
+
+$("#roundslider2").roundSlider({
+    sliderType: "min-range",
+    value: 50
+});
+
+$("#roundslider3").roundSlider({
+    sliderType: "range",
+    value: "20,50"
+});

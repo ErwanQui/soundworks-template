@@ -20,6 +20,8 @@ class PlayerExperience extends AbstractExperience {
 
     window.addEventListener('resize', () => this.render());
     this.render();
+
+
   }
 
   render() {
@@ -29,10 +31,19 @@ class PlayerExperience extends AbstractExperience {
     this.rafId = window.requestAnimationFrame(() => {
       render(html`
         <div style="padding: 20px">
-          <h1 style="margin: 20px 0">${this.client.type} [id: ${this.client.id}]</h1>
+          <h1 style="margin: 20px 0; color:blue">${this.client.type} [id: ${this.client.id}]</h1>
         </div>
+        <input type=button value="ouais"/>
+        <div id="roundslider1" class="roundslider"></div>
+        <div id="roundslider2" class="roundslider"></div>
+        <div id="roundslider3" class="roundslider"></div>
+        <div class="Libraries"><Libraries>
+        <script type="text/javascript" src='./Game.js'></script>
+        </Libraries></div>
       `, this.$container);
     });
+    console.log(this);
+    console.log(this.client);
   }
 }
 
