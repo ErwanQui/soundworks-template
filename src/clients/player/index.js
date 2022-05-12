@@ -81,3 +81,6 @@ if (numEmulatedClients > 1) {
 } else {
   launch($container, 0);
 }
+
+// console.log(PlayerExperience)
+// console.log(this)

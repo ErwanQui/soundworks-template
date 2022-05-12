@@ -19,6 +19,12 @@ server.router.use(serveStatic('public'));
 server.router.use('build', serveStatic(path.join('.build', 'public')));
 server.router.use('vendors', serveStatic(path.join('.vendors', 'public')));
 
+//////// ajout
+import globalsSchema from './schemas/globals';
+import playerSchema from './schemas/player';
+import monsterSchema from './schemas/monster';
+////////) ajout
+
 console.log(`
 --------------------------------------------------------
 - launching "${config.app.name}" in "${ENV}" environment
@@ -54,8 +60,33 @@ console.log(`
       };
     });
 
+//////// ajout
+
     const playerExperience = new PlayerExperience(server, 'player');
     const controllerExperience = new ControllerExperience(server, 'controller');
+
+    // testTry = new SharedStateManagerServer()
+    // testTry.attach('number')
+    server.stateManager.registerSchema('globals', globalsSchema)
+    server.stateManager.registerSchema('player', playerSchema)
+    // console.log(server)
+
+
+    // src/server/index.js (line 62)
+    const globalsState = await server.stateManager.create('globals');
+    // console.log('globalsState:', globalsState.getValues());
+    // > globalsState: { master: 0, mute: false }
+    const parameters = globalsState.getValues();
+    globalsState.set({NbMax: Math.ceil((parameters.Distance*parameters.Speed)/parameters.Time) + 1});
+
+    for (let i = 1; i <= globalsState.getValues().NbMax; i++) {
+      // console.log("bonsoir")
+        server.stateManager.registerSchema('monster' + i, monsterSchema);
+        // console.log(i);
+    }
+
+    ////////) ajout
+
 
     // start all the things
     await server.start();
