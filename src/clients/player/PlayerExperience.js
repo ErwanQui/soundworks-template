@@ -136,7 +136,7 @@ class PlayerExperience extends AbstractExperience {
 
     encoder.azim = Monster.Position - ShotAngle;
     encoder.updateGains();
-    Gain.gain.setValueAtTime((GlobalDistance - Monster.Distance)/GlobalDistance, 0);
+    Gain.gain.setValueAtTime((GlobalDistance - Monster.Distance)/(2*GlobalDistance), 0);
     return;
   }
 
@@ -173,8 +173,8 @@ class PlayerExperience extends AbstractExperience {
       for (let i = 0; i < this.ActiveMonsters.length; i++) {
         if (this.ActiveMonsters[i] == MonsterId) {
           this.playerState.set({Alive: false});
-          for (let i = 0; i < this.ActiveMonsters.length; i++) {
-            this.Gains[this.ActiveMonsters[i]-1].disconnect(this.audioContext.destination);
+          for (let j = 0; j < this.ActiveMonsters.length; j++) {
+            this.Gains[this.ActiveMonsters[j]-1].disconnect(this.audioContext.destination);
           }
           this.ActiveMonsters = [];
           alert("vous êtes mort");
