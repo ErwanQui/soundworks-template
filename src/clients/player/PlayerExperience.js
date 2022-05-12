@@ -183,13 +183,11 @@ class PlayerExperience extends AbstractExperience {
     }
   }
 
+
   render() {
     // debounce with requestAnimationFrame
     window.cancelAnimationFrame(this.rafId);
 
-    // this.test = "garderie";
-    // console.log(this.playerState)
-    // console.log(this.globalsState)
     this.rafId = window.requestAnimationFrame(() => {
 
       render(html`
@@ -209,9 +207,6 @@ class PlayerExperience extends AbstractExperience {
         </div>
       `, this.$container);
     });
-    // console.log(this);
-    // console.log(this.client);
-    // console.log(this.rafId);
   }
 }
 

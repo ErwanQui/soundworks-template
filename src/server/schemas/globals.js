@@ -18,7 +18,7 @@ export default {
     min: 0,
     max: 100000,
     step: 1,
-    default: 51000,
+    default: 8000,
   },
 
   Distance: {
@@ -34,7 +34,7 @@ export default {
     min: 0,
     max: 10000,
     step: 1,
-    default: 5000,
+    default: 2000,
   },
 
   NbMax: {
